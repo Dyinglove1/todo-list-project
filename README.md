@@ -1,70 +1,137 @@
-# Getting Started with Create React App
+Certainly! Here is the README content formatted as code:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```markdown
+# To-Do List Application
 
-## Available Scripts
+This is a simple To-Do List application built with React.js on the frontend, Express.js on the backend, and MongoDB for data storage. The application allows users to create, update, delete, and filter tasks. This project is also Dockerized to easily set up and run MongoDB.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Features](#features)
+- [Installation](#installation)
+- [Running the Application](#running-the-application)
+- [Project Structure](#project-structure)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Create Tasks:** Add new tasks to your to-do list.
+- **Update Tasks:** Edit the details of existing tasks.
+- **Delete Tasks:** Remove tasks that are no longer needed.
+- **Filter and Sort:** Filter tasks by status (completed/pending) and sort them by date.
+- **Persistent Storage:** Tasks are stored in MongoDB, ensuring data persists across sessions.
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To run this project locally, follow these steps:
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [Docker](https://www.docker.com/get-started) (if you want to use Docker for MongoDB)
+- [Git](https://git-scm.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Clone the Repository
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+git clone https://github.com/YOUR_USERNAME/REPOSITORY_NAME.git
+cd REPOSITORY_NAME
+```
 
-### `npm run eject`
+### Install Dependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Backend
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Navigate to the `backend` directory and install the required Node.js packages:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+cd backend
+npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Frontend
 
-## Learn More
+Navigate to the `todo-list` directory and install the required Node.js packages:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+cd ../todo-list
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Running the Application
 
-### Code Splitting
+### Using Docker (Recommended)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Ensure Docker is installed and running on your machine.
+2. From the root directory of the project, run the following command to start MongoDB:
 
-### Analyzing the Bundle Size
+   ```bash
+   docker-compose up -d
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. Start the backend server:
 
-### Making a Progressive Web App
+   ```bash
+   cd backend
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+4. Start the frontend server:
 
-### Advanced Configuration
+   ```bash
+   cd ../todo-list
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+5. Open your web browser and navigate to `http://localhost:3000` to view the application.
 
-### Deployment
+### Without Docker
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+If you prefer to run MongoDB locally without Docker:
 
-### `npm run build` fails to minify
+1. Install MongoDB manually on your machine.
+2. Update the MongoDB connection string in `backend/index.js` if necessary.
+3. Follow the same steps as above to start the backend and frontend servers.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Project Structure
+
+```plaintext
+root-folder/
+├── backend/               # Backend API using Express.js and Mongoose
+│   ├── index.js           # Main server file
+│   ├── package.json       # Backend dependencies
+│   └── ...
+├── mongo-data/            # MongoDB data storage (ignored by Git)
+├── todo-list/             # Frontend application using React.js
+│   ├── src/               # React source files
+│   ├── public/            # Public assets (HTML, Favicon)
+│   ├── package.json       # Frontend dependencies
+│   └── ...
+├── docker-compose.yml     # Docker Compose file for MongoDB
+└── README.md              # This README file
+```
+
+## Technologies Used
+
+- **Frontend:** React.js, Bootstrap
+- **Backend:** Node.js, Express.js, Mongoose
+- **Database:** MongoDB
+- **Containerization:** Docker
+
+## Contributing
+
+Contributions are welcome! If you would like to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Create a new Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
